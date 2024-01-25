@@ -1,4 +1,6 @@
 public class DDL {
-System.out.println("Hello");
 
+    public class Node{
+
+    }
 }
