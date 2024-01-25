@@ -1,12 +1,13 @@
 public class DLL<E> {
- private static class DLL<E> {
-    //private element <E>;
+ private class Node {
+
+     private element <E>;
      private Node<E> head;
      private Node<E> tail;
      private int counter;
 
 
- } // static class
+ } // Node Class
 public DLL() {
 this.counter = 0 ;
 this.head= 0;
