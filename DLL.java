@@ -1,9 +1,27 @@
 public class DLL<E> {
-  class Node {
+  class Node<E> {
+      private <E> element;
+      private Node<E> prev;
+      private Node<E> next;
 
-     private <E> element;
-     private Node<E> prev;
-     private Node<E> next;
+      public Node<E>(){
+          element = null;
+          prev = null;
+          next = null;
+      }
+
+      public Node<E>(E element) {
+          this.element = element;
+          prev = null;
+          next = null;
+      }
+
+      public Node<E>(E element, Node<E> prev, Node<E> next){
+          this.element = element;
+          this.prev = prev;
+          this.next = next;
+      }
+
 
 
  } // Node Class
