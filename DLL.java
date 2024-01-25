@@ -1,23 +1,21 @@
 public class DLL<E> {
- private class Node {
+  class Node {
 
-     private element <E>;
-     private Node<E> head;
-     private Node<E> tail;
-     private int counter;
+     private <E> element;
+     private Node<E> prev;
+     private Node<E> next;
 
 
  } // Node Class
-public DLL() {
-this.counter = 0 ;
-this.head= 0;
-this.tail=0;
-    }
+
+    private int counter;
+
 public int size() {
+
      return size;
 } //size
 public boolean isEmpty() {
-if(this.size = 0 ) {
+if (this.size = 0) {
 reutrn true;
 } else {
     return false;
