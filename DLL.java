@@ -8,8 +8,18 @@ public class DLL<E> {
 
  } // Node Class
 
-    private int counter;
 
+
+    //DLL field
+  private Node<E> head;
+  private Node<E> tail;
+  private int counter;
+public DLL() {
+
+    this.head = null;
+    this.tail = null;
+    this.counter = 0;
+    }
 public int size() {
 
      return size;
