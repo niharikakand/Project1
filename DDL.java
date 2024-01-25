@@ -1,6 +1,6 @@
 public class DDL {
 
     public class Node{
-        private
+        private E element;
     }
 }
