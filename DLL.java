@@ -22,9 +22,30 @@ public class DLL<E> {
           this.next = next;
       }
 
+      public void setElement(E element) {
+          this.element = element;
+      }
 
+      public void setNext(Node<E> next) {
+          this.next = next;
+      }
 
- } // Node Class
+      public void setPrev(Node<E> prev) {
+          this.prev = prev;
+      }
+
+      public E getElement() {
+          return element;
+      }
+
+      public Node<E> getNext() {
+          return next;
+      }
+
+      public Node<E> getPrev() {
+          return prev;
+      }
+  } // Node Class
 
     private int counter;
 
