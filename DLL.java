@@ -1,4 +1,4 @@
-public class DDL {
+public class DLL {
 
     public class Node{
         private E element;
