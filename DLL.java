@@ -1,11 +1,11 @@
 public class DLL<E> {
   class Node<E> {
       // Node Fields
-      private <E> element;
+      private E element;
       private Node<E> prev;
       private Node<E> next;
 
-      public Node<E>(){
+      public Node<E>() {
           element = null;
           prev = null;
           next = null;
@@ -49,8 +49,8 @@ public class DLL<E> {
   } // Node Class
 
 // DDL fields
-private Node<E> head;
-private Node<E> tail;
+private DDL.Node<E> head;
+private DDL.Node<E> tail;
 private int counter;
 
 // DDL Constructors
@@ -58,7 +58,7 @@ public DDL<E>(){
     // initializes all references fields to null and counter to zero
     head = null;
     tail = null;
-    counter == 0;
+    counter = 0;
 } // DDL<E>()
 
 // public methods
@@ -87,15 +87,26 @@ public E last() {
 } // last()
 
 public void addFirst(E element) {
-    // adds new element at the front of the list
+    DDL.Node<E> newNode = new DDL.Node (element);
+    newNode.setNext(head);
+    newNode.setPrev(null);
+    head = newNode;
+    counter++;
 } //addFirst(E element)
 
 public void addLast(E element) {
-    // adds new element to end of the list
+    DDL.Node<E> newNode = new DDL.Node (element);
+    newNode.setPrev(tail);
+    newNode.setNext(null);
+    //wait what do i do here
+    counter++;
 } // addLast(E element)
 
 public E removeFirst() {
     // removes and returns first element of list
+    DLL.Node<E> temp = head.getNext();
+    temp.setPrev(null);
+
 } // removeFirst()
 
 public E removeLast() {
@@ -104,7 +115,11 @@ public E removeLast() {
 
 public String toString() {
     // returns string displays in sequence of elements EX
+    // "null"
+    // "null <--a--> null"
+    // "null <--a<-->b--> null"
     // "null <--a<-->b<-->c-->null"
+
 } // toString()
 
 public DDL<E> clone(){
@@ -144,6 +159,9 @@ public void swap(Node<E> x, Node<E> y){
 } // swap(Node<E> x, Node<E> y)
 publiv void clear() {
     // removes all elements of the list
+    head = null;
+    tail = null;
+    size() = 0;
 } // clear()
 
 public E set(int index, E element) {
