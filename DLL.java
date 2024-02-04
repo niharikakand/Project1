@@ -63,7 +63,16 @@ public DDL<E>(){
 
 // public methods
 public int size() {
-     return size;
+    this.counter = 0;
+    Node<E> current = head;
+    while (current != null) {
+    this.counter++; // current.getNext();
+    Node<E> next = current.next;
+    }
+    return counter;
+
+
+    // return size;
 } // size()
 public boolean isEmpty() {
     if(this.size() == 0) {
