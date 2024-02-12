@@ -1,23 +1,23 @@
 public class DLL<E> {
-  class Node<E> {
+  static class Node<E> {
       // Node Fields
       private E element;
       private Node<E> prev;
       private Node<E> next;
 
-      public Node<E>() {
+      public Node() {
           element = null;
           prev = null;
           next = null;
       } // Node<E>() Constructor
 
-      public Node<E>(E element) {
+      public Node(E element) {
           this.element = element;
           prev = null;
           next = null;
       } // Node<E>(E element) constructor
 
-      public Node<E>(E element, Node<E> prev, Node<E> next){
+      public Node(E element, Node<E> prev, Node<E> next){
           this.element = element;
           this.prev = prev;
           this.next = next;
@@ -49,12 +49,12 @@ public class DLL<E> {
   } // Node Class
 
 // DDL fields
-private DDL.Node<E> head;
-private DDL.Node<E> tail;
+private Node<E> head;
+private Node<E> tail;
 private int counter;
 
 // DDL Constructors
-public DDL<E>(){
+public DLL(){
     // initializes all references fields to null and counter to zero
     head = null;
     tail = null;
@@ -63,16 +63,7 @@ public DDL<E>(){
 
 // public methods
 public int size() {
-    this.counter = 0;
-    Node<E> current = head;
-    while (current != null) {
-    this.counter++; // current.getNext();
-    Node<E> next = current.next;
-    }
     return counter;
-
-
-    // return size;
 } // size()
 public boolean isEmpty() {
     if(this.size() == 0) {
@@ -83,39 +74,56 @@ public boolean isEmpty() {
 } // isEmpty()
 
  public E first(){
-    return head.getElement();
+    if(!isEmpty()) {
+        return head.getElement();
+    }
+    return null;
  } //E First
 
 public E last() {
-    // need to work on this one
-    E temp = head.getNext();
-    while(temp.getNext() != null) {
-        temp = temp.getNext();
-    } // while
-    return temp;
+    if(!isEmpty()) {
+        return tail.getElement();
+    }
+    return null;
 } // last()
 
 public void addFirst(E element) {
-    DDL.Node<E> newNode = new DDL.Node (element);
-    newNode.setNext(head);
-    newNode.setPrev(null);
-    head = newNode;
+    Node<E> newNode = new Node<>(element,null, head);
+    if(isEmpty()) {
+        tail = newNode;
+    } else {
+        head.setPrev(newNode);
+    }
     counter++;
+    head = newNode;
 } //addFirst(E element)
 
 public void addLast(E element) {
-    DDL.Node<E> newNode = new DDL.Node (element);
-    newNode.setPrev(tail);
-    newNode.setNext(null);
-    //wait what do i do here
-    counter++;
+    Node<E> newNode = new Node<>(element,tail, null);
+    if(isEmpty()) {
+        head = newNode;
+        counter++;
+    } else {
+        tail.setNext(newNode);
+        counter++;
+    }
+    tail = newNode;
 } // addLast(E element)
 
 public E removeFirst() {
     // removes and returns first element of list
-    DLL.Node<E> temp = head.getNext();
-    temp.setPrev(null);
-
+    if(isEmpty()) {
+        return null;
+    }
+    E temp = head.getElement(); // saves the element
+    head = head.getNext(); // removes the first node
+    //if there's only one element we need to make sure tail is null
+    if(isEmpty()){
+        tail = null;
+    } else {
+        head.setPrev(null); // sets the new head's prev as null
+    };
+    return temp; // returns saved element
 } // removeFirst()
 
 public E removeLast() {
