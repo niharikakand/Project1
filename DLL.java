@@ -94,40 +94,54 @@ public void addFirst(E element) {
     } else {
         head.setPrev(newNode);
     }
-    counter++;
     head = newNode;
+    counter++;
 } //addFirst(E element)
 
 public void addLast(E element) {
     Node<E> newNode = new Node<>(element,tail, null);
     if(isEmpty()) {
         head = newNode;
-        counter++;
     } else {
         tail.setNext(newNode);
-        counter++;
     }
     tail = newNode;
+    counter++;
 } // addLast(E element)
 
 public E removeFirst() {
     // removes and returns first element of list
     if(isEmpty()) {
         return null;
-    }
+    } // if
     E temp = head.getElement(); // saves the element
     head = head.getNext(); // removes the first node
-    //if there's only one element we need to make sure tail is null
+    // if there's only one element we need to make sure tail is null
     if(isEmpty()){
-        tail = null;
+        tail = null; // makes sure the pointers are null
     } else {
         head.setPrev(null); // sets the new head's prev as null
-    };
+    } // if else
+    counter--;
     return temp; // returns saved element
+
 } // removeFirst()
 
 public E removeLast() {
     // removes and returns last element of list
+    if(isEmpty()) {
+        return null;
+    } // if
+    E temp = tail.getElement(); // saves the element
+    tail = tail.getPrev(); // removes the last node
+    // if there's only one element we need to make sure the head is null
+    if(isEmpty()) {
+        head = null; // makes sure the pointers are null
+    } else {
+        tail.setNext(null); // sets the new tail's next as null
+    } // if else
+    counter--;
+    return temp;
 } // removeLast()
 
 public String toString() {
